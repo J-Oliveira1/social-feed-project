@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CreatePost = (props) => {
+const CreatePostForm = (props) => {
     const [name, setName] = useState('');
     const [post, setPost] = useState('');
 
@@ -8,7 +8,12 @@ const CreatePost = (props) => {
         e.preventDefault();
         alert(`${name} 
         Post Created!`)
-    };
+        let newEntry = {
+            name: name,
+            post: post
+        };
+        props.addNewPostProp(newEntry);
+    }
 
     const handleName = e=> {
         setName(e.target.value);
@@ -26,12 +31,12 @@ const CreatePost = (props) => {
         </div>
         <div>
             <label htmlFor="">Post</label>
-            <input type="text" value={post} onChange = {handlePost} />
-            <button type='submit'>Create</button>
+            <textarea type="text" value={post} onChange = {handlePost} />
+            <button type='submit' className='btn btn-primary' style={{'margin-top': '1em'}}>Create</button>
         </div>
         
     </form> 
     );
 }
  
-export default CreatePost;
+export default CreatePostForm;

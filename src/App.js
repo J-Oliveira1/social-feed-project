@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
-import CreatePost from './Components/CreatePost/CreatePost.jsx';
+import CreatePostForm from './Components/CreatePostForm/CreatePostForm.jsx';
+import PostList from './Components/PostList/PostList.jsx';
+
 
 function App() {
 
-  const [entries, setEntries] = useState([])
+  const [post, setPost] = useState([{name: 'Joseph Oliveira', post: 'Charlie Day, bird law!'}]);
+
+  function addNewPost(post) {
+    let newPosts = [post, ...post];
+    setPost(newPosts);
+  }
 
   return (
     <div>
-      <h3>Social Feed</h3>
-      <CreatePost/>
-
-
+      <h3>SocialFeed</h3>
+      <CreatePostForm addNewPostProp={addNewPost}/>
+      <PostList post={post}/>
     </div>
+
   );
 }
 
