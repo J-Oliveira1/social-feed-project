@@ -17,8 +17,6 @@ function App() {
     <div>
       <h3>SocialFeed</h3>
       <CreatePostForm addNewPostProp={newPosts}/>
-
-      
       <PostList newPosts={posts}/>
     </div>
 
