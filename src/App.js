@@ -3,20 +3,23 @@ import CreatePostForm from './Components/CreatePostForm/CreatePostForm.jsx';
 import PostList from './Components/PostList/PostList.jsx';
 
 
+
 function App() {
 
-  const [post, setPost] = useState([{name: 'Joseph Oliveira', post: 'Charlie Day, bird law!'}]);
+  const [posts, setPost] = useState([{name: 'Joseph Oliveira', post: 'Charlie Day, bird law!'}]);
 
-  function addNewPost(post) {
-    let newPosts = [post, ...post];
+  function newPosts(post) {
+    let newPosts = [post, ...posts];
     setPost(newPosts);
   }
 
   return (
     <div>
       <h3>SocialFeed</h3>
-      <CreatePostForm addNewPostProp={addNewPost}/>
-      <PostList post={post}/>
+      <CreatePostForm addNewPostProp={newPosts}/>
+
+      
+      <PostList newPosts={posts}/>
     </div>
 
   );
